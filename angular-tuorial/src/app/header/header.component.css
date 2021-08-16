@@ -20,10 +20,11 @@ a:active {
     color: white;
 }
 
-/*header prebacit u grid*/
+/*sve flex*/
 header {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .header-left {
@@ -35,6 +36,5 @@ header {
     display: flex;
     flex-direction: row;
     margin: auto 50px;
-    justify-content: space-around;
-    align-items: center;
+    padding: 8px 0;
 }

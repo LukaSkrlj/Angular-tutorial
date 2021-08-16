@@ -1,8 +1,10 @@
 input {
   padding: .5rem;
   width: 100%;
-  max-width: 300px;
-  border-radius: 5px;
+  max-width: 600px;
+  box-sizing: border-box;
+  display: block;
+  border-radius: 6px;
 }
 
 input:focus {
@@ -17,8 +19,9 @@ li {
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
+  background-color: white;
   display: inline-block;
-  width: 100%;
+  width: 200%;
   max-width: 600px;
   padding: .5rem;
   box-sizing: border-box;
@@ -32,7 +35,8 @@ li {
 }
 
 ul.search-result {
+  position: absolute;
+  z-index: 1;
   margin-top: 0;
   padding-left: 0;
-  background-color: white;
 }
