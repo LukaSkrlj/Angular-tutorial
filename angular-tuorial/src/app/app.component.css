@@ -1,5 +1,4 @@
-/* AppComponent's private CSS styles */
-h1 {
+  h1 {
     margin-bottom: 0;
   }
   nav a {
@@ -16,6 +15,7 @@ h1 {
     color: white;
     background-color: #42545C;
   }
+  
   nav a.active {
     background-color: black;
   }

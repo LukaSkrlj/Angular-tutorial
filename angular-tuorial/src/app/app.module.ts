@@ -11,9 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main/main.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     MesagesComponent,
     DashboardComponent,
     HeroSearchComponent,
+    HeaderComponent,
+    MainComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

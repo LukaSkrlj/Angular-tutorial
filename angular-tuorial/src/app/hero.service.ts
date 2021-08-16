@@ -1,4 +1,3 @@
-import { HEROES } from './mock-heroes';
 import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
@@ -10,12 +9,13 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HeroService {
-
   private heroesUrl = 'api/heroes'; 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  
+  constructor( private http: HttpClient, private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -87,7 +87,4 @@ export class HeroService {
       catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }
-
-
-  constructor( private http: HttpClient, private messageService: MessageService) { }
 }
