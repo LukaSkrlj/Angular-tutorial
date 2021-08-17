@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
     this.getHeroes();
     this.heroService.currentHero
       .subscribe((hero) =>{ 
-        this.heroes.map(obj => this.heroes.find(o => o.id === hero.id) || obj);
-        console.log(this.heroes.find(o => o.id === hero.id));
+        this.heroes.map(obj => this.heroes.find(o => o.id === hero.id) ? hero : obj);
+        console.log(hero);
     });
   }
 
