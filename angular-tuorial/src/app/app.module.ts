@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -38,7 +39,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [],
+  providers: [ {provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 
  

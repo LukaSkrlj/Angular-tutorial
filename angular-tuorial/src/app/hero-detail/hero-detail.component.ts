@@ -11,7 +11,7 @@ import { Hero } from '../hero';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero?: Hero;
+  hero: Hero = {name: '', id: 0};
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -19,21 +19,18 @@ export class HeroDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.route.params.subscribe(params => {this.getHero(params['id']);});
   }
 
-  getHero(): void {
-    const id = 
-    Number(this.route.snapshot.paramMap.get('id'));
+  getHero(id: number): void {
     this.heroService.getHero(id)
-    .subscribe(hero => this.hero = hero);
+     .subscribe(hero => this.hero = hero);
   }
 
   save(): void {
     if (this.hero) {
-      this.heroService.updateHero(this.hero)
-        .subscribe(() => this.location.back());
+      this.heroService.updateHero(this.hero);
+        //.subscribe(() => this.location.back());
     }
   }
-
 }

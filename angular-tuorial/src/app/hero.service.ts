@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { Hero } from './hero';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class HeroService {
   private heroesUrl = 'api/heroes'; 
+  private heroInputSource = new Subject<Hero>();
+  currentHero = this.heroInputSource.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -52,6 +54,7 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
+    this.heroInputSource.next(hero);
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
