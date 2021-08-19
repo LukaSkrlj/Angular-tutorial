@@ -17,6 +17,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NewsComponent } from './news/news.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent,
     MainComponent,
     SidebarComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [ {provide: APP_BASE_HREF, useValue: '/' }],
+  providers: [ ],
   bootstrap: [AppComponent]
 
  

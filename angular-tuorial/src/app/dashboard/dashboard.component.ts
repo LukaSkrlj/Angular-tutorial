@@ -7,7 +7,7 @@ import { MessageService } from '../message.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.css' ]
+  styleUrls: [ './dashboard.component.scss' ]
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
@@ -19,8 +19,7 @@ export class DashboardComponent implements OnInit {
     this.getHeroes();
     this.heroService.currentHero
       .subscribe((hero) =>{ 
-        this.heroes.map(obj => this.heroes.find(o => o.id === hero.id) ? hero : obj);
-        console.log(hero);
+        this.heroes = this.heroes.map(obj => obj.id === hero.id ? hero : obj);
     });
   }
 

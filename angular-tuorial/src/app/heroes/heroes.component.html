@@ -1,25 +1,38 @@
-<h2>My Heroes</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
-  </li>
-</ul>
+<div class="main">
+  <div>
+    <h2>My Heroes</h2>
 
-<hr>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes;index as i; first as isFirst; last as isLast" 
+          [ngClass]="{ 'first' : isFirst,  'last' : isLast}">
+        
+        <a routerLink="/heroes/{{hero.id}}">
+          <span class="badge">&nbsp; {{hero.id}}. &nbsp; </span> {{hero.name}}
+        </a>
+        
+        <button class="delete" title="delete hero"(click)="delete(hero)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+        
+      </li>
+    </ul>
 
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
+    <br>
 
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add hero
-  </button>
+    <div>
+      <label for="new-hero">Hero name: </label>
+      <input #heroName id="new-hero" placeholder="Add a new hero..."/>
+
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+        Add hero
+      </button>
+    </div>
+  </div>
+
+<router-outlet></router-outlet>
 </div>
 
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->

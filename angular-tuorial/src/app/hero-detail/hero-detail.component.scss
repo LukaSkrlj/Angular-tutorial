@@ -1,0 +1,36 @@
+/* HeroDetailComponent's private CSS styles */
+@import 'colors';
+@import 'fonts';
+
+label {
+  color: color('white');
+  font-weight: weight('bold');
+  font-size: fontSize('medium');
+}
+
+input {
+  font-size: 1em;
+  padding: .5rem;
+}
+
+button {
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  margin: 1rem 0;
+  color: color('white');
+  background-color: color('dark-blue');
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: color('blue');
+  }
+
+  &:disabled{
+    background-color: color('white');
+    color: color('gray');
+    cursor: auto;
+  }
+}
+
+  

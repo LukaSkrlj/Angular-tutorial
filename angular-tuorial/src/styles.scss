@@ -1,30 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-}
+@import 'colors';
+@import 'fonts';
+@import 'positioning';
+
 h2, h3 {
-  color: #444;
+  color: color('white');
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
 
 body, input[type="text"], button {
-  color: #333;
+  color: color('white');
   font-family: Cambria, Georgia, serif;
 }
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
+  @include theme(true);
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #E4F0FF;
+  background-size: cover;
 }
 
 .container {
@@ -32,26 +33,27 @@ body {
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
-  ". header header"
+  "header header header"
   "side content content";
-  height: 100vh;
+  @include mobile() {
+    /*pozicionirat sidebar iznda contenta ili dodat button za sidebar*/
+  }
 }
 
 app-header {
   grid-area: header;
-  color: white;
   font-size: 14px;
-  background-color: #58BDFF;
+  background-color: transparent;
 }
 
 app-sidebar {
   grid-area: side;
-  background-color: #2A92BF;
+  background-color: transparent;
 }
 
 app-main {
   grid-area: content;
-  background-color: #A1BDFF;
-  padding: 25px;
+  background-color: transparent;
+  padding: 0px 80px;
 }
 

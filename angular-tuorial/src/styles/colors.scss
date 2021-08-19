@@ -1,0 +1,31 @@
+$marvel-colors: (
+  "blue":#0000ffff,
+  "dark-blue":#002d5cff,
+  "dark-red":#870000ff,
+  "gray":#a5a5abff,
+  "white":#f0f0f0ff
+);
+
+$dc-colors: (
+  "white": #fdff00ff,
+  "gray": #988829ff,
+  "dark-red": #242424ff,
+  "dark-blue":#282E3Cff,
+  "blue": #505c7cff
+);
+
+@function color($color, $marvel-theme: true) {
+    @if $marvel-theme {
+        @return map-get($marvel-colors, $color);
+    } @else {
+        @return map-get($dc-colors, $color);
+    }
+}
+
+@mixin theme($marvel-theme: true){
+    @if $marvel-theme {
+        background: url(./assets/images/marvel.jpg) no-repeat center center fixed;
+    } @else {
+        background: url(./assets/images/dc.jpg) no-repeat center center fixed;
+    }
+}
