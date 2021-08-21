@@ -1,9 +1,9 @@
-import { MessageService } from './../message.service';
+import { MessageService } from '../../../services/message.service';
 
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../../interfaces/hero';
+import { HeroService } from '../../../services/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -23,10 +23,12 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-        .subscribe(heroes => this.heroes = heroes);
+        .subscribe(heroes => {this.heroes = heroes; console.log(heroes)});
   }
  
   onSelect(hero: Hero) :void {
+    //this.heroService.getHeroes();
+    this.getHeroes();
     this.selectedHero = hero;
     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
