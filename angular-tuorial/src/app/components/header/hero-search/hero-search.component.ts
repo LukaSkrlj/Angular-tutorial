@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { HeroService } from '../../../services/hero.service';
   templateUrl: './hero-search.component.html',
   styleUrls: [ './hero-search.component.scss' ]
 })
-export class HeroSearchComponent implements OnInit {
+export class HeroSearchComponent implements OnInit, OnDestroy {
   heroes$!: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
@@ -36,5 +36,9 @@ export class HeroSearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
+  }
+
+  ngOnDestroy(){
+    
   }
 }
