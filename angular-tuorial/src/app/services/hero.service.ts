@@ -1,15 +1,17 @@
+import { JsonHero } from './../interfaces/json-hero';
+import { Hero } from '../interfaces/hero';
 import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { Hero } from '../interfaces/hero';
+import { Observable, of, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-  private heroesUrl = 'api/heroes'; 
+  private heroesUrl = 'http://localhost:4200/assets/heroes.json'; 
   private heroInputSource = new Subject<Hero>();
   currentHero = this.heroInputSource.asObservable();
 
@@ -19,13 +21,53 @@ export class HeroService {
   
   constructor( private http: HttpClient, private messageService: MessageService) { }
 
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(_ => this.log('fetched heroes')),
-        catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
+  getHeroesData(){
+    let data = this.http.get<any>('https://hero-rest-api-default-rtdb.firebaseio.com/hero-rest-api-default-rtdb/hero')
+    .pipe(
+       tap(_ => this.log('fetched heroes')),
+       catchError(this.handleError<any>('getHeroes', [])) // then handle the error
+    );
+    return data;
   }
+
+  getHeroes(): Observable<JsonHero> {
+    let jsonHero = this.http.get<object>(this.heroesUrl)
+    .pipe(
+      map(json => json = this.keysToCamel(json)),
+      tap(_ => this.log('fetched heroes')),
+      catchError(this.handleError<any>('getHeroes', []))
+   );
+    
+    return jsonHero;
+  }
+
+  
+  keysToCamel(o: any):any {
+    if (typeof o === 'object' && !Array.isArray(o) && typeof o != 'function') {
+      const n:any= {};
+      //
+      Object.keys(o)
+        .forEach((k) => {
+          n[this.toCamel(k)] = this.keysToCamel(o[k]);
+        });
+  
+      return n;
+    } else if (Array.isArray(o)) {
+      return o.map((i) => {
+        return this.keysToCamel(i);
+      });
+    }
+  
+    return o;
+  };
+
+  toCamel = (s : string) => {
+    return s.replace(/([-_][a-z])/ig, ($1 : string) => {
+      return $1.toUpperCase()
+        .replace('-', '')
+        .replace('_', '');
+    });
+  };
 
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
@@ -55,6 +97,7 @@ export class HeroService {
 
   updateHero(hero: Hero): Observable<any> {
     this.heroInputSource.next(hero);
+    this.http.put(this.heroesUrl, hero, this.httpOptions).subscribe(a => console.log(a))
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero'))
@@ -91,3 +134,7 @@ export class HeroService {
     );
   }
 }
+function toCamel(k: string) {
+  throw new Error('Function not implemented.');
+}
+
