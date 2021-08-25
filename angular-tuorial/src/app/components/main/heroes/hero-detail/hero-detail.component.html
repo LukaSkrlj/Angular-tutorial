@@ -5,6 +5,18 @@
         <label for="hero-name">Hero name: </label>
         <input #heroName id="hero-name" [(ngModel)]="hero.name" placeholder="name">
     </div>
+    <div>
+        <label for="hero-gender">Hero gender: </label>
+        {{ hero.gender}}
+    </div>
+    <div>
+        <label for="hero-location">Hero location: </label>
+        {{ hero.location}}
+    </div>
+    <div>
+        <label for="hero-ranking">Hero ranking: </label>
+        {{ hero.ranking}}
+    </div>
 </div>
 
 <!-- <button (click)="goBack()">go back</button> -->

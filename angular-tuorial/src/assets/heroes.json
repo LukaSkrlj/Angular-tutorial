@@ -1,0 +1,185 @@
+{
+  "hero" : [ {
+    "costume" : {
+      "accessories" : "No accessory",
+      "adornments" : "Rope/String",
+      "arms" : "Hide covering upper limb",
+      "belts" : "Suspenders",
+      "boots" : "Ballet-like",
+      "bring" : "upper limb",
+      "dominant_colour" : "Silver",
+      "gloves" : "Welder",
+      "hat" : "Karakul",
+      "legs" : "Plastic - Transparent cover",
+      "logo_type" : "Number located left foot",
+      "mask" : "Masquerade (All but mouth area)",
+      "secondary_colour" : "Beige",
+      "shoulders" : "Flared",
+      "special_properties" : "Heat Resistant",
+      "tape" : "Typical Cape",
+      "torso" : "Hide"
+    },
+    "gender" : "female",
+    "id" : 101,
+    "location" : "South Africa",
+    "name" : "Dr Nice",
+    "power" : {
+      "danger_level" : "Trivial",
+      "range" : "30",
+      "type" : "psychic",
+      "unit" : "imperial"
+    },
+    "ranking": 4
+  }, {
+    "costume" : {
+      "accessories" : "Backpack",
+      "adornments" : "Metallic Trim",
+      "arms" : "Plastic - Transparent covering all of the limb",
+      "belts" : "Chain",
+      "boots" : "Loafer",
+      "cape" : "Something else",
+      "dominant_colour" : "Grey",
+      "gloves" : "Rubber/Surgical",
+      "hat" : "Hood/cowl",
+      "legs" : "Bronze covering upper limb",
+      "logo_type" : "Skull located on left shin",
+      "mask" : "Caricature (All but mouth area)",
+      "secondary_colour" : "Purple",
+      "shoulders" : "Horns - Straight",
+      "special_properties" : "Can be hidden under regular clothing",
+      "torso" : "Tight-Fitting rubber"
+    },
+    "gender" : "female",
+    "id" : 102,
+    "location" : "East Coast",
+    "name" : "Narco",
+    "power" : {
+      "danger_level" : "Uprising",
+      "range" : "400",
+      "type" : "psychic",
+      "units" : "imperial"
+    },
+    "ranking": 2
+  }, {
+    "costume" : {
+      "accessories" : "Other accessory",
+      "adornments" : "Spikes – large",
+      "arms" : "Hide covering upper and lower limb",
+      "belts" : "Pins",
+      "boots" : "Loafer",
+      "cape" : "Wing-like – Demon",
+      "dominant_colour" : "Gold",
+      "gloves" : "None",
+      "hat" : "Something Else",
+      "legs" : "Plate armour covering upper limb",
+      "logo_type" : "Circles (overlapping) located both shoulders",
+      "mask" : "Scuba (Eyes/nose and cheeks)",
+      "secondary_colour" : "Blue",
+      "shoulders" : "Pointed",
+      "special_properties" : "No Special Property",
+      "torso" : "Scales"
+    },
+    "gender" : "male",
+    "id" : 103,
+    "location" : "Central Europe",
+    "name" : "Bombasto",
+    "power" : {
+      "danger_level" : "Uprising",
+      "range" : "0",
+      "type" : "psychic",
+      "units" : "meters"
+    },
+    "ranking": 3
+  }, {
+    "costume" : {
+      "accessories" : "Glasses/Monocles",
+      "adornments" : "Spikes – small",
+      "arms" : "Something Else/Unknown covering upper limb",
+      "belts" : "Metal (non-chain)",
+      "boots" : "Moccasin",
+      "cape" : "Very long (up to twice as long as user)",
+      "dominant_colour" : "Beige",
+      "gloves" : "Rubber/Surgical",
+      "hat" : "Helmet – sport related",
+      "legs" : "Chain mail covering upper and joint",
+      "logo_type" : "Stripes located both shoulders",
+      "mask" : "Blank/smooth (Eyes/nose and cheeks)",
+      "secondary_colour" : "Blue",
+      "shoulders" : "Horns – Curved",
+      "special_properties" : "Fire Proof",
+      "torso" : "Chain Mail"
+    },
+    "gender" : "N/A",
+    "id" : 104,
+    "location" : "N/A",
+    "name" : "Celeritas",
+    "power" : {
+      "danger_level" : "N/A",
+      "range" : "90",
+      "type" : "psychic",
+      "units" : "meters"
+    },
+    "ranking": 1
+  }, {
+    "costume" : {
+      "accessories" : "Weapon – staff",
+      "adornments" : "Zips/Button/Fasteners",
+      "arms" : "Misc. cloth covering upper and joint",
+      "belts" : "Trophies",
+      "boots" : "Heeled/high Heeled",
+      "cape" : "Glider-like wings",
+      "dominant_colour" : "Grey",
+      "gloves" : "Padded",
+      "hat" : "Balaclava",
+      "legs" : "Fake Metal covering joint",
+      "logo_type" : "Animal outline located left hand",
+      "mask" : "Monster-like (All but mouth area)",
+      "secondary_colour" : "Black",
+      "shoulders" : "Skull – Humanoid",
+      "special_properties" : "Masks smells",
+      "torso" : "Plate armour"
+    },
+    "gender" : "female",
+    "id" : 105,
+    "location" : "Eastern Asia",
+    "name" : "Magneta",
+    "power" : {
+      "danger_level" : "Trivial",
+      "range" : "2",
+      "type" : "psychic",
+      "unit" : "meters"
+    },
+    "ranking": 6
+  }, {
+    "costume" : {
+      "accessories" : "Cigar/cigarette holder/Pipe/Other smoking device",
+      "adornments" : "No adornments or logo",
+      "arms" : "Precious metal (gold, silver, etc.) covering lower limb",
+      "belts" : "Metal (non-chain)",
+      "boots" : "Boot – long (up to thigh)",
+      "cape" : "Very long (up to twice as long as user)",
+      "dominant_colour" : "Silver",
+      "gloves" : "Something Else",
+      "hat" : "Bobble/tuque",
+      "legs" : "Plant based covering upper and joint",
+      "logo_type" : "Letter (any alphabet) located right thigh",
+      "mask" : "None",
+      "secondary_colour" : "Grey",
+      "shoulders" : "Epaulette – ceremonial",
+      "special_properties" : "Always Clean",
+      "torso" : "Tight-Fitting rubber/plastic"
+    },
+    "gender" : "male",
+    "id" : 106,
+    "location" : "Central Europe",
+    "name" : "RubberMan",
+    "power" : {
+      "danger_level" : "Apocalypse",
+      "range" : "N/A",
+      "type" : "physical",
+      "unit" : "meters"
+    }
+    ,
+    "ranking": 5
+  } ]
+}

@@ -19,12 +19,14 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   GetRssFeedData() {
-    const options = 
-    { params: new HttpParams().set('unit', 'second').set('interval', '10') }
+    const options = { params: new HttpParams()
+      .set('unit', 'second')
+      .set('interval', '10'),
+    };
+    
     this.subscriptions.add = this.http.get<any>("https://lorem-rss.herokuapp.com/feed", options)
       .subscribe(data => {
         console.log(data);
-       
       });
   }
 

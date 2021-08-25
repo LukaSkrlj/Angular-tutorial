@@ -7,5 +7,31 @@
 </head>
 <body>
   <app-root></app-root>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDpjhz8IUwKJwdNR40DJHHE9gMreTmx7Yc",
+    authDomain: "hero-rest-api.firebaseapp.com",
+    databaseURL: "https://hero-rest-api-default-rtdb.firebaseio.com",
+    projectId: "hero-rest-api",
+    storageBucket: "hero-rest-api.appspot.com",
+    messagingSenderId: "622278058892",
+    appId: "1:622278058892:web:99feb6c24ca19f3407eca9",
+    measurementId: "G-1K82PJTEQM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+ console.log(firebase.analytics())
+</script>
+
 </body>
+
 </html>
