@@ -22,11 +22,13 @@ export class NewsComponent implements OnInit {
     this.http.get<any>("https://lorem-rss.herokuapp.com/feed", options)
       .subscribe(data => {
         console.log(data);
-        // let parseString = xml2js.parseString;
-        // parseString(data, (err, result: NewsRss) => {
-        //   this.RssData = result;
-        // });
+       
       });
   }
 }
 
+
+ // let parseString = xml2js.parseString;
+        // parseString(data, (err, result: NewsRss) => {
+        //   this.RssData = result;
+        // });

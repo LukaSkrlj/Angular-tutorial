@@ -5,11 +5,13 @@
     <h2>My Heroes</h2>
 
     <ul class="heroes">
-      <li *ngFor="let hero of heroes;index as i; first as isFirst; last as isLast" 
-          [ngClass]="{ 'first' : isFirst,  'last' : isLast}">
-        
+      <li *ngFor="let hero of heroes;index as i; first as isFirst; last as isLast;" 
+          [ngClass]="{ 'first' : isFirst,  'last' : isLast}" 
+          (click)="onSelect(hero)">
+          
         <a routerLink="/heroes/{{hero.id}}">
-          <span class="badge">&nbsp; {{hero.id}}. &nbsp; </span> {{hero.name}}
+          <span class="badge">&nbsp; {{ selectedHero?.id === hero.id ? selectedHero?.id : hero.id}}. &nbsp; </span> 
+          {{ selectedHero?.id === hero.id ? selectedHero?.name : hero.name }}
         </a>
         
         <button class="delete" title="delete hero"(click)="delete(hero)">
@@ -32,7 +34,7 @@
     </div>
   </div>
 
-<router-outlet></router-outlet>
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- <router-outlet  (heroNameChangeEvent)="changeHeroName($event)"></router-outlet> -->
 </div>
 
-<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
