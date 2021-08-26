@@ -7,13 +7,14 @@
     <ul class="heroes">
       <li *ngFor="let hero of heroes;index as i; first as isFirst; last as isLast;" 
           [ngClass]="{ 'first' : isFirst,  'last' : isLast}" 
-          (click)="onSelect(hero)">
-          
-        <a routerLink="/heroes/{{hero.id}}">
-          <span class="badge">&nbsp; {{ selectedHero?.id === hero.id ? selectedHero?.id : hero.id}}. &nbsp; </span> 
-          {{ selectedHero?.id === hero.id ? selectedHero?.name : hero.name }}
+          (click)="onSelect(hero)"
+          >
+        <div >
+        <a routerLink="/heroes/{{hero.id}}" appGenderColors [heroGender]="hero.gender">
+          <span class="badge">&nbsp; {{ hero.id}}. &nbsp; </span> 
+          {{ hero.name }}
         </a>
-        
+      </div>
         <button class="delete" title="delete hero"(click)="delete(hero)">
           <i class="fa fa-trash-o"></i>
         </button>

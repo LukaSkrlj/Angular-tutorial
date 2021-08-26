@@ -6,6 +6,7 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -16,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+import { GenderColors } from './components/main/heroes/gender-colors.directive';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/main/heroes/heroes.component';
 import { HeroDetailComponent } from './components/main/heroes/hero-detail/hero-detail.component';
@@ -51,7 +53,8 @@ const material = [
     HeaderComponent,
     MainComponent,
     SidebarComponent,
-    NewsComponent
+    NewsComponent,
+    GenderColors
   ],
 
   imports: [

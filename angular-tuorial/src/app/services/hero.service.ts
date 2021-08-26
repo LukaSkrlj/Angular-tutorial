@@ -34,7 +34,7 @@ export class HeroService {
   getHeroes(): Observable<JsonHero> {
     let jsonHero = this.http.get<object>(this.heroesUrl)
     .pipe(
-      map(json =>json = this.heroAdapter.heroMapper(json)),
+      map(json => this.heroAdapter.heroMapper(json)),
       tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<any>('getHeroes', []))
     );
