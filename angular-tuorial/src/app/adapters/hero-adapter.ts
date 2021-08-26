@@ -1,3 +1,9 @@
+import { Injectable } from "@angular/core";
+
+@Injectable({
+    providedIn: 'root'
+  })
+
 export class HeroAdapter{
     heroMapper(o: any):any {
         if (typeof o === 'object' && !Array.isArray(o) && typeof o != 'function') {

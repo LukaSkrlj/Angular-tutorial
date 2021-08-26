@@ -24,7 +24,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     this.subscriptions.add = this.heroService.currentHero
       .subscribe((hero) => this.selectedHero = hero);
     this.subscriptions.add = this.heroService.getHeroes()
-        .subscribe(heroes => {this.heroes = heroes.hero; console.log(heroes)});
+      .subscribe(heroes => {this.heroes = heroes.hero; console.log(heroes)});
   }
 
   getHeroesData(){

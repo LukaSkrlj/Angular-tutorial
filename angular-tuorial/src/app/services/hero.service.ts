@@ -14,7 +14,6 @@ import { HeroAdapter } from '../adapters/hero-adapter';
 export class HeroService {
   private heroesUrl = 'http://localhost:4200/assets/heroes.json'; 
   private heroInputSource = new Subject<Hero>();
-
   currentHero = this.heroInputSource.asObservable();
 
   httpOptions = {
@@ -35,10 +34,7 @@ export class HeroService {
   getHeroes(): Observable<JsonHero> {
     let jsonHero = this.http.get<object>(this.heroesUrl)
     .pipe(
-      map(json =>{ 
-        json = this.heroAdapter.heroMapper(json);
-        //this.heroesAndRanks = this.heroAdapter.heroMapper(json);
-      }),
+      map(json =>json = this.heroAdapter.heroMapper(json)),
       tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<any>('getHeroes', []))
     );

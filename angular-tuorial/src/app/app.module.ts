@@ -16,22 +16,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import { AppComponent } from '../app.component';
-import { HeroesComponent } from '../components/main/heroes/heroes.component';
-import { HeroDetailComponent } from '../components/main/heroes/hero-detail/hero-detail.component';
-import { MesagesComponent } from '../components/main/mesages/mesages.component';
-import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from '../components/sidebar/dashboard/dashboard.component';
-import { HeroSearchComponent } from '../components/header/hero-search/hero-search.component';
-import { HeaderComponent } from '../components/header/header.component';
-import { MainComponent } from '../components/main/main.component';
-import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { NewsComponent } from '../components/main/news/news.component';
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './components/main/heroes/heroes.component';
+import { HeroDetailComponent } from './components/main/heroes/hero-detail/hero-detail.component';
+import { MesagesComponent } from './components/main/mesages/mesages.component';
+import { AppRoutingModule } from './modules/app-routing.module';
+import { DashboardComponent } from './components/sidebar/dashboard/dashboard.component';
+import { HeroSearchComponent } from './components/header/hero-search/hero-search.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NewsComponent } from './components/main/news/news.component';
 import { environment } from 'src/environments/environment';
 
 
 const material = [
-
   MatAutocompleteModule,
   MatSliderModule,
   MatToolbarModule,
@@ -39,7 +38,6 @@ const material = [
   MatIconModule,
   MatButtonModule,
   MatCardModule,
-  
 ]
 
 @NgModule({
