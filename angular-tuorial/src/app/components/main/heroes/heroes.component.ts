@@ -1,10 +1,11 @@
 import { MessageService } from '../../../services/message.service';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { Hero } from '../../../interfaces/hero';
+import { Hero } from '../../../models/hero';
 import { HeroService } from '../../../services/hero.service';
-import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-container';
+import { SubscriptionContainer } from 'src/app/models/subscriptions-container';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -20,7 +21,10 @@ export class HeroesComponent implements OnInit, OnDestroy {
   constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.subscriptions.add = this.heroService.currentHero
+      .subscribe((hero) => this.selectedHero = hero);
+    this.subscriptions.add = this.heroService.getHeroes()
+        .subscribe(heroes => {this.heroes = heroes.hero; console.log(heroes)});
   }
 
   getHeroesData(){
@@ -29,14 +33,22 @@ export class HeroesComponent implements OnInit, OnDestroy {
   }
 
   getHeroes(): void {
-    this.subscriptions.add = this.heroService.getHeroes()
-        .subscribe(heroes => {this.heroes = heroes.hero; console.log(heroes)});
+    this.heroService.getHeroes();
+  }
+
+  updateHero(heroName: string){
+    if (this.selectedHero) {
+      this.selectedHero.name = heroName;
+      this.heroService.updateHero(this.selectedHero);
+    }
   }
  
   onSelect(hero: Hero) :void {
-    //this.heroService.getHeroes();
-    this.getHeroes();
-    this.selectedHero = hero;
+    //getHeroes() se zove za update liste kad se klikne save da se ime promjeni, neefektivno
+    //zasad sam stavio tako, mogu sve heroje pohranjivat u polje i onda iz polja dohvacivati podatke
+    // medjutim nigdje ne postoji garancija da se heroju stvarno updejtalo ime
+    this.getHeroes(); 
+    this.heroService.onSelectHero(hero);
     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
   

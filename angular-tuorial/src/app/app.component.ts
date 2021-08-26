@@ -8,10 +8,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
+  title = 'angular-tutorial';
+  opened: boolean = false;
   constructor(private http: HttpClient){}
+  
   ngOnInit(){
     
-    
+  }
+
+  toogleSidebar(open: boolean){
+    this.opened = open;
   }
 }

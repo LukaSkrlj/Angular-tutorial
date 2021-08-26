@@ -1,10 +1,11 @@
-import { JsonHero } from './../interfaces/json-hero';
-import { Hero } from '../interfaces/hero';
+import { JsonHero } from '../models/json-hero';
+import { Hero } from '../models/hero';
 import { Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 import { Observable, of, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { HeroAdapter } from '../adapters/hero-adapter';
 
 
 @Injectable({
@@ -13,13 +14,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class HeroService {
   private heroesUrl = 'http://localhost:4200/assets/heroes.json'; 
   private heroInputSource = new Subject<Hero>();
+
   currentHero = this.heroInputSource.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   
-  constructor( private http: HttpClient, private messageService: MessageService) { }
+  constructor( private http: HttpClient, private messageService: MessageService, private heroAdapter: HeroAdapter) { }
 
   getHeroesData(){
     let data = this.http.get<any>('https://hero-rest-api-default-rtdb.firebaseio.com/hero-rest-api-default-rtdb/hero')
@@ -33,41 +35,16 @@ export class HeroService {
   getHeroes(): Observable<JsonHero> {
     let jsonHero = this.http.get<object>(this.heroesUrl)
     .pipe(
-      map(json => json = this.keysToCamel(json)),
+      map(json =>{ 
+        json = this.heroAdapter.heroMapper(json);
+        //this.heroesAndRanks = this.heroAdapter.heroMapper(json);
+      }),
       tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<any>('getHeroes', []))
-   );
+    );
     
     return jsonHero;
   }
-
-  
-  keysToCamel(o: any):any {
-    if (typeof o === 'object' && !Array.isArray(o) && typeof o != 'function') {
-      const n:any= {};
-      //
-      Object.keys(o)
-        .forEach((k) => {
-          n[this.toCamel(k)] = this.keysToCamel(o[k]);
-        });
-  
-      return n;
-    } else if (Array.isArray(o)) {
-      return o.map((i) => {
-        return this.keysToCamel(i);
-      });
-    }
-  
-    return o;
-  };
-
-  toCamel = (s : string) => {
-    return s.replace(/([-_][a-z])/ig, ($1 : string) => {
-      return $1.toUpperCase()
-        .replace('-', '')
-        .replace('_', '');
-    });
-  };
 
   getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
@@ -93,6 +70,12 @@ export class HeroService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  onSelectHero(hero: Hero){
+    //postoji problem, komponente su subscrajbed na heroInput
+    //bolja solucija je koristit neku drugu varijablu za selected
+    this.heroInputSource.next(hero);
   }
 
   updateHero(hero: Hero): Observable<any> {

@@ -1,53 +1,76 @@
 @import 'colors';
 
-a {
-    display: flex;
-    text-decoration: none;
-    font-size: 15px;
-    background-color: transparent;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 100px;
-    color: color('white');
+.navbar{
+    justify-content: space-between;
+    align-self: center;
+    box-sizing: border-box;
 
-    &:hover{
-        color: color('gray');
+    #{&}__right{
+        margin-right: 4vw;
+
+        span{
+            a {
+                padding: 1rem;
+                text-decoration: none;
+                // display: flex;
+                // font-size: 15px;
+                // background-color: transparent;
+                // justify-content: center;
+                // align-items: center;
+                // height: auto;
+                // width: 100px;
+                color: color('white');
+
+                &:hover{
+                    color: color('gray');
+                    text-decoration: underline;
+                }
+
+                &:active{
+                    background-color: color('dark-blue');
+                    border-radius: 10px;
+                    color: color('white');
+                }
+            }
+        }
     }
 
-    &:active{
-        background-color: color('dark-red');
-        border-radius: 10px;
-        color: color('white');
+    #{&}__left{
+        align-self: center;
+
+        span{
+            text-align: center;
+            font-size: 1.5rem;
+        }
     }
 }
 
 /*sve flex*/
-header {
-    display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    margin: 11vh 0;
+// header {
+//     display: flex;
+//     justify-content:space-between;
+//     flex-wrap: wrap;
+//     margin: 11vh 0;
 
-    div {
-        display: flex;
-        flex-direction: row;
-        box-sizing: border-box;
-        &.left{
-            width: 33%;
-        }
+//     div {
+//         display: flex;
+//         flex-direction: row;
+//         box-sizing: border-box;
+//         &.left{
+//             width: 33%;
+//         }
 
-        &.middle{
-            width: 33%;
-            justify-content: center;
-        }
+//         &.middle{
+//             width: 33%;
+//             justify-content: center;
+//         }
 
-        &.right{
-            width: 33%;
-            padding-left: 13%;
-        }
-    }
-}
+//         &.right{
+//             width: 33%;
+//             padding-left: 13%;
+//         }
+//     }
+// }
 
 
 

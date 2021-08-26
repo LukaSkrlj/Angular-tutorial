@@ -6,7 +6,7 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Hero } from '../../../interfaces/hero';
+import { Hero } from '../../../models/hero';
 import { HeroService } from '../../../services/hero.service';
 
 @Component({
@@ -39,6 +39,6 @@ export class HeroSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    
+
   }
 }

@@ -1,8 +1,9 @@
-import { Hero } from '../../../../interfaces/hero';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Hero } from '../../../../models/hero';
+import { Component, OnInit, Input, OnDestroy, Output } from '@angular/core';
 
 import { HeroService } from '../../../../services/hero.service';
-import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-container';
+import { SubscriptionContainer } from 'src/app/models/subscriptions-container';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,19 +14,15 @@ import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-containe
 export class HeroDetailComponent implements OnInit, OnDestroy {
 
   @Input() hero?: Hero;
+  @Output() heroSaved = new EventEmitter<string>();
   subscriptions = new SubscriptionContainer();
 
   constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {}
 
-  save(): void {
-    //promjenit da save metoda toogla vrijednost unutar heroes liste
-    //za ispis koristit polje jer je http request spor al moz postoji bolja metoda za sve skupa osposobit
-    if (this.hero) {
-      this.subscriptions.add = this.heroService.updateHero(this.hero)
-        .subscribe(() => console.log(this.hero?.name));
-    }
+  save(hero: string): void {
+    this.heroSaved.emit(hero);
   }
 
   ngOnDestroy(){

@@ -1,9 +1,12 @@
 <div class="container">
-  <app-header></app-header>
-
+  <app-header (toogleSidebar)="toogleSidebar($event)"></app-header>
   <app-main></app-main>
-
-  <app-sidebar></app-sidebar>
+  
+  
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="opened" mode="push"><app-sidebar></app-sidebar></mat-sidenav>
+    <mat-sidenav-content></mat-sidenav-content>
+  </mat-sidenav-container>
 
   <!-- <router-outlet></router-outlet> -->
 </div>

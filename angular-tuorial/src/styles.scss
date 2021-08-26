@@ -26,15 +26,17 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-size: cover;
+  background-color: color('white');
 }
 
 .container {
+  
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 100%;
   grid-template-areas:
-  "header header header"
-  "side content content";
+  "header header"
+  "side content";
   @include mobile() {
     /*pozicionirat sidebar iznda contenta ili dodat button za sidebar*/
   }
@@ -42,18 +44,22 @@ body {
 
 app-header {
   grid-area: header;
-  font-size: 14px;
   background-color: transparent;
 }
 
-app-sidebar {
+mat-sidenav-container {
   grid-area: side;
-  background-color: transparent;
+  background-color: cornflowerblue;
+  mat-sidenav-content{
+    background-color: cornflowerblue;
+  }
 }
 
 app-main {
   grid-area: content;
-  background-color: transparent;
+  background-color: cornflowerblue;
   padding: 0px 80px;
+  padding-top: 10vh;
 }
+
 

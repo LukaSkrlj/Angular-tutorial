@@ -1,23 +1,27 @@
-<div *ngIf="hero">
-    <h2>{{hero.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{hero.id}}</div>
-    <div>
-        <label for="hero-name">Hero name: </label>
-        <input #heroName id="hero-name" [(ngModel)]="hero.name" placeholder="name">
-    </div>
-    <div>
-        <label for="hero-gender">Hero gender: </label>
-        {{ hero.gender}}
-    </div>
-    <div>
-        <label for="hero-location">Hero location: </label>
-        {{ hero.location}}
-    </div>
-    <div>
-        <label for="hero-ranking">Hero ranking: </label>
-        {{ hero.ranking}}
-    </div>
-</div>
+<mat-card *ngIf="hero">
+    <mat-card-title>{{ hero.name |titlecase }} Details</mat-card-title>
 
-<!-- <button (click)="goBack()">go back</button> -->
-<button *ngIf="hero" (click)="save()">Save</button>
+    <mat-card-content>
+        <div>
+            <label for="hero-name">Hero name: </label>
+            <input #heroName id="hero-name" placeholder="name">
+        </div>
+        <div>
+            <label for="hero-gender">Hero gender: </label>
+            {{ hero.gender }}
+        </div>
+        <div>
+            <label for="hero-location">Hero location: </label>
+            {{ hero.location }}
+        </div>
+        <div>
+            <label for="hero-ranking">Hero ranking: </label>
+            {{ hero.ranking }}
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button (click)="save(heroName.value)">Save</button>
+    </mat-card-actions>
+</mat-card>
+

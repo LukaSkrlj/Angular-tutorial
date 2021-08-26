@@ -25,11 +25,10 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
-    background-color: color('white');
+    background-color: white;
 
     &:hover{
       left: .1em;
-      background-color: color('white');    
     }
 
     &:active{
@@ -44,11 +43,14 @@
   a {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     color: color('dark-blue');
     text-decoration: none;  
     height: 2em;
     border-radius: 4px;
     width: 100%;
+    font-size: 1rem;
+    text-align: center;
 
     &:hover{
       color: color('dark-red');
@@ -58,6 +60,7 @@
       color: color('white');
     }
   }
+
   button.delete{
     border: transparent;
     background-color: transparent;

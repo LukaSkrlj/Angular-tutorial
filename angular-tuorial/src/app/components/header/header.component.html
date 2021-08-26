@@ -1,14 +1,12 @@
-<header class="header">
-    <!-- left -->
-    <div class="left" style="visibility: hidden;"></div>
-    <!-- center -->
-    <div class="middle" >
-        <a routerLink="/heroes">Heroes</a>
-        <a routerLink="/news">News</a>
+<mat-toolbar class="navbar "color="primary">
+    <div class="navbar__left">
+        <button (click)="onClickTrophy()" mat-mini-fab color="primary"><span class="material-icons">emoji_events</span></button>
     </div>
+    <div class="navbar__right">
+        <span><a routerLink="/heroes">Heroes</a></span>
+        <span><a routerLink="/news">News</a></span>
+        
+    </div>
+</mat-toolbar>
 
-    <!-- right side -->
-    <div class="right">
-        <app-hero-search></app-hero-search>
-    </div>
-</header>
+

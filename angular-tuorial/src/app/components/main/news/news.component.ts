@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-container';
+import { SubscriptionContainer } from 'src/app/models/subscriptions-container';
 // import * as xml2js from "xml2js";
 // import { NewsRss } from '../news-rss';
 // import { StylesCompileDependency } from '@angular/compiler';

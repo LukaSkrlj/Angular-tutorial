@@ -17,7 +17,6 @@
         <button class="delete" title="delete hero"(click)="delete(hero)">
           <i class="fa fa-trash-o"></i>
         </button>
-        
       </li>
     </ul>
 
@@ -37,7 +36,6 @@
     </div>
   </div>
 
-  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
-<!-- <router-outlet  (heroNameChangeEvent)="changeHeroName($event)"></router-outlet> -->
+  <app-hero-detail (heroSaved)="updateHero($event)"[hero]="selectedHero"></app-hero-detail>
 </div>
 

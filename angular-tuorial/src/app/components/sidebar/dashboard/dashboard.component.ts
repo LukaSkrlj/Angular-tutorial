@@ -1,9 +1,9 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Hero } from '../../../interfaces/hero';
+import { Hero } from '../../../models/hero';
 import { HeroService } from '../../../services/hero.service';
 import { MessageService } from '../../../services/message.service';
-import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-container';
+import { SubscriptionContainer } from 'src/app/models/subscriptions-container';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +12,7 @@ import { SubscriptionContainer } from 'src/app/interfaces/subscriptions-containe
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   heroes: Hero[] = [];
-  hero: Hero =  {
+  hero: Hero = {
     costume : {
       accessories : "No accessory",
       adornments : "Rope/String",
@@ -50,7 +50,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.subscriptions.add = this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes.hero.sort((a,b) => b.ranking - a.ranking).slice(0, 5));
+  
     this.subscriptions.add = this.heroService.currentHero
       .subscribe((hero) =>{ 
         this.heroes = this.heroes.map(obj => obj.id === hero.id ? hero : obj);
@@ -58,11 +60,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   getHeroes(): void {
-    this.subscriptions.add = this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.hero.sort((a,b) => (a.ranking < b.ranking) ? 1 : ((b.ranking < a.ranking) ? -1 : 0)).slice(0, 5));
+    this.heroService.getHeroes();
   }
 
   onSelect(hero: Hero): void {
+    this.heroService.onSelectHero(hero);
     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 

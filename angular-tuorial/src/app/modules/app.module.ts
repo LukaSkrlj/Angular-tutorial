@@ -1,8 +1,20 @@
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSliderModule } from '@angular/material/slider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppComponent } from '../app.component';
 import { HeroesComponent } from '../components/main/heroes/heroes.component';
@@ -10,16 +22,25 @@ import { HeroDetailComponent } from '../components/main/heroes/hero-detail/hero-
 import { MesagesComponent } from '../components/main/mesages/mesages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from '../components/sidebar/dashboard/dashboard.component';
-import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { InMemoryDataService } from '../services/in-memory-data.service';
 import { HeroSearchComponent } from '../components/header/hero-search/hero-search.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { MainComponent } from '../components/main/main.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { NewsComponent } from '../components/main/news/news.component';
-import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 
+
+const material = [
+
+  MatAutocompleteModule,
+  MatSliderModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+  
+]
 
 @NgModule({
   declarations: [
@@ -34,26 +55,33 @@ import { environment } from 'src/environments/environment';
     SidebarComponent,
     NewsComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-tutorial'), // Required for everything
-    AngularFirestoreModule, // Only required for database features
-    // Only required for auth features,
-    
-    
+    BrowserAnimationsModule, 
+    ReactiveFormsModule,
 
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // )
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatSliderModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-tutorial'), 
+
   ],
-  providers: [ ],
+
+  providers: [material],
   bootstrap: [AppComponent]
-
-
 })
+
 export class AppModule { }
 
